@@ -185,6 +185,8 @@ class YoutubeSearch:
         for contents in data["onResponseReceivedActions"][1][
             "reloadContinuationItemsCommand"
         ]["continuationItems"]:
+            if "richItemRenderer" not in contents.keys():
+                continue
             results.append(
                 self._video_tag_parser(contents["richItemRenderer"]["content"])
             )
